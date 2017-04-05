@@ -12,7 +12,9 @@ import { BookListComponent } from './books/book-list/book-list.component';
 import { BookDetailsComponent } from './books/book-details/book-details.component';
 import { BookFromComponent } from './books/book-from/book-from.component';
 import { BookSearchComponent } from './books/book-search/book-search.component';
-import {BooksService} from "./books/shared/services/books.service";
+
+import {BooksService} from './books/shared/services/books.service';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import {BooksService} from "./books/shared/services/books.service";
     BookListComponent,
     BookDetailsComponent,
     BookFromComponent,
-    BookSearchComponent
+    BookSearchComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

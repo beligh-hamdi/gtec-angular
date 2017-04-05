@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "api": "./node_modules/.bin/json-server --watch api/db.json --no-cors"
+    "api": "./node_modules/.bin/json-server --watch api/db.json"
 },
   "private": true,
   "dependencies": {

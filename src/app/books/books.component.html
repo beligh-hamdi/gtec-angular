@@ -8,5 +8,9 @@
   <app-book-list [books]="booksObs | async"></app-book-list>
 </div>
 
+<div *ngIf="book">
+  <app-book-details [book]="book"></app-book-details>
+</div>
+
 
 

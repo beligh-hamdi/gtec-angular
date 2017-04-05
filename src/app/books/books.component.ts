@@ -15,9 +15,13 @@ export class BooksComponent implements OnInit, OnDestroy {
   books: Book[] = [];
   booksObs: Observable<Book[]>;
 
+  mixObs: Observable<any[]>;
+
   book: Book;
 
+
   subscription: Subscription;
+  subscription1: Subscription;
 
   constructor(private booksService: BooksService) {}
 
@@ -29,12 +33,12 @@ export class BooksComponent implements OnInit, OnDestroy {
 
     this.subscription = this.booksService.fetchBooks().subscribe(
       (books) => {
-
         this.books = books;
       },
       error => { console.log('error', error);},
       () => { console.log('finish'); }
     );
+
 
     this.init();
   }
@@ -42,13 +46,18 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.subscription1.unsubscribe();
   }
 
   private init() {
-    this.book = new Book();
-    this.book.id = 1;
-    this.book.title = 'title1';
-    this.book.description = 'description';
+
+    this.subscription1 = this.booksService.deleteBook(1).subscribe(
+      (book) => {
+        this.book = book;
+      },
+      error => { console.log('error', error);},
+      () => { console.log('finish'); }
+    );
   }
 
 }

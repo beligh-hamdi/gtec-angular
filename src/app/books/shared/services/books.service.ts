@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Book} from '../models/book';
-import {git status, Http} from '@angular/http';
+import {Headers, Http, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
@@ -11,7 +11,8 @@ import 'rxjs/add/operator/catch';
 export class BooksService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  apiUrl = 'http://localhost:3000';
+  private options = new RequestOptions({ headers: this.headers });
+  private apiUrl = 'http://localhost:3000';
 
   constructor(private http: Http) { }
 
@@ -36,11 +37,19 @@ export class BooksService {
   }
 
   deleteBook(id: number): Observable<Book> {
-    return this.http.delete(`${this.apiUrl}/books/${id}`, {headers: this.headers})
+    return this.http.delete(`${this.apiUrl}/books/${id}`, this.options)
       .map(response => response.json());
   }
 
+  createBook(book: Book): Observable<Book> {
+    return this.http.post(`${this.apiUrl}/books`, book, this.options)
+      .map(response => response.json());
+  }
 
+  updateBook(book: Book): Observable<Book> {
+    return this.http.put(`${this.apiUrl}/books/${book.id}`, book, this.options)
+      .map(response => response.json());
+  }
 
 
   // https://github.com/beligh-hamdi/gtec-angular

@@ -51,6 +51,12 @@ export class BooksService {
       .map(response => response.json());
   }
 
+  searchBook(query: string) {
+    return this.http.get(`${this.apiUrl}/books?q=${query}`)
+      .map(response => response.json())
+      .retry(3);
+  }
+
 
   // https://github.com/beligh-hamdi/gtec-angular
   //  https://tinyurl.com/lbwlapn

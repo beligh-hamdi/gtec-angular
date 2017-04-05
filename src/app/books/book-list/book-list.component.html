@@ -1,0 +1,13 @@
+<p>
+  book-list works!
+</p>
+
+<ul>
+  <li *ngFor="let book of books" (click)="showDetails(book)">
+    {{book.title}}
+  </li>
+</ul>
+
+<div *ngIf="detailsEnabled">
+  <app-book-details [book]="book"></app-book-details>
+</div>

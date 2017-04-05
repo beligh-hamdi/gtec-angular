@@ -1,0 +1,12 @@
+<p>
+  books works!
+</p>
+
+<div *ngIf="books">
+  <app-book-list [books]="books"></app-book-list>
+
+  <app-book-list [books]="booksObs | async"></app-book-list>
+</div>
+
+
+

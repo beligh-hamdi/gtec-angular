@@ -36,6 +36,19 @@ export class BooksComponent implements OnInit, OnDestroy {
     );
   }
 
+  formSaved(book: Book) {
+    this.subscription1 = this.booksService.createBook(book).subscribe(
+      (b) => {
+        //this.book = b;
+        this. init();
+      },
+      error => {
+        console.log('error', error);
+      },
+      () => { console.log('finish'); }
+    );
+  }
+
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();

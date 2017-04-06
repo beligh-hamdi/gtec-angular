@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 
 @Component({
@@ -10,6 +10,7 @@ export class BookFormComponent implements OnInit {
 
   title: FormControl;
   title1: string;
+  @Output() formSaved = new EventEmitter();
 
   constructor() { }
 
@@ -22,6 +23,7 @@ export class BookFormComponent implements OnInit {
   }
 
   saveBook(bookForm) {
+    this.formSaved.emit(bookForm.value);
     console.log('bookForm:', bookForm.value);
   }
 

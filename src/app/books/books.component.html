@@ -13,6 +13,6 @@
 <app-book-details *ngIf="book" [book]="book"></app-book-details>
 
 
-<app-book-form></app-book-form>
+<app-book-form (formSaved)="formSaved($event)"></app-book-form>
 
 

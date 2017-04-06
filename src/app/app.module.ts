@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -38,6 +38,7 @@ import 'hammerjs';
     FormsModule,
     HttpModule,
     MaterialModule,
+    FlexLayoutModule,
     AppRoutingModule
   ],
   providers: [BooksService],

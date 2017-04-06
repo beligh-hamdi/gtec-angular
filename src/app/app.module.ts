@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {Http, HttpModule} from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
 
@@ -17,8 +17,14 @@ import { BookSearchComponent } from './books/book-search/book-search.component';
 import {BooksService} from './books/shared/services/books.service';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { BookFormComponent } from './books/book-form/book-form.component';
+import {TranslateLoader, TranslateModule, } from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import 'hammerjs';
+
+export function createTranslateLoader(http: Http) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 
 @NgModule({
@@ -39,7 +45,14 @@ import 'hammerjs';
     HttpModule,
     MaterialModule,
     FlexLayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+      }
+    })
   ],
   providers: [BooksService],
   bootstrap: [AppComponent]

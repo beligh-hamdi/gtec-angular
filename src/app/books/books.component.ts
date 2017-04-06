@@ -15,6 +15,7 @@ export class BooksComponent implements OnInit, OnDestroy {
   books: Book[] = [];
   booksObs: Observable<Book[]>;
   book: Book;
+  isFormBookActivate: boolean;
   subscription: Subscription;
   subscription1: Subscription;
 
@@ -47,6 +48,10 @@ export class BooksComponent implements OnInit, OnDestroy {
       },
       () => { console.log('finish'); }
     );
+  }
+
+  addFormBook() {
+    this.isFormBookActivate = true;
   }
 
   ngOnDestroy() {

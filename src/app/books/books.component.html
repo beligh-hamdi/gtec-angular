@@ -4,7 +4,7 @@
     <div *ngIf="books">
       <app-book-list [books]="books" (bookSelected)="selectedBook($event)"></app-book-list>
       <!--<app-book-list [books]="booksObs | async"></app-book-list>-->
-      <button md-fab><md-icon>add</md-icon></button>
+      <button md-fab (click)="addFormBook()"><md-icon>add</md-icon></button>
     </div>
   </md-card-content>
 </md-card>
@@ -13,6 +13,6 @@
 <app-book-details *ngIf="book" [book]="book"></app-book-details>
 
 
-<app-book-form (formSaved)="formSaved($event)"></app-book-form>
+<app-book-form *ngIf="isFormBookActivate" (formSaved)="formSaved($event)"></app-book-form>
 
 

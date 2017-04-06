@@ -1,14 +1,18 @@
-<h1>Books</h1>
+<md-card>
+  <md-card-content>
+    <h1>Books</h1>
+    <div *ngIf="books">
+      <app-book-list [books]="books" (bookSelected)="selectedBook($event)"></app-book-list>
+      <!--<app-book-list [books]="booksObs | async"></app-book-list>-->
+      <button md-fab><md-icon>add</md-icon></button>
+    </div>
+  </md-card-content>
+</md-card>
 
-<div class="jumbotron">
-  <div *ngIf="books">
-    <app-book-list [books]="books"></app-book-list>
 
-    <app-book-list [books]="booksObs | async"></app-book-list>
-  </div>
+<app-book-details *ngIf="book" [book]="book"></app-book-details>
 
-  <div *ngIf="book">
-    <app-book-details [book]="book"></app-book-details>
-  </div>
-</div>
+
+
+
 

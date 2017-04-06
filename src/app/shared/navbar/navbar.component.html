@@ -1,20 +1,18 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Project name</a>
-    </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li *ngFor="let link of links" routerLinkActive="active"><a [routerLink]="link.path">
-          {{link.name}}</a>
-        </li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
+<md-toolbar color="primary">
+  <span>Formation Angular</span>
+  <span class="spacer"></span>
+  <button md-icon-button>
+    <md-icon>more_vert</md-icon>
+  </button>
+</md-toolbar>
+
+<nav md-tab-nav-bar>
+  <a md-tab-link *ngFor="let link of links" [routerLink]="[link.path]"
+     routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+    {{link.name}}
+  </a>
 </nav>
+
+<!--
+https://coursetro.com/posts/code/29/Working-with-Angular-2-Material
+-->

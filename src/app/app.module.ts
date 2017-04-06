@@ -19,7 +19,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { BookFormComponent } from './books/book-form/book-form.component';
 
 import 'hammerjs';
-import {MdlModule} from "@angular-mdl/core";
+
 
 @NgModule({
   declarations: [
@@ -38,7 +38,6 @@ import {MdlModule} from "@angular-mdl/core";
     FormsModule,
     HttpModule,
     MaterialModule,
-    MdlModule,
     AppRoutingModule
   ],
   providers: [BooksService],

@@ -9,8 +9,7 @@ import {Book} from '../shared/models/book';
 export class BookListComponent implements OnInit {
 
   @Input() books: Array<Book>;
-  book: Book;
-  detailsEnabled: boolean;
+  @Output() bookSelected = new EventEmitter();
 
   constructor() { }
 
@@ -18,8 +17,7 @@ export class BookListComponent implements OnInit {
   }
 
   showDetails(book) {
-    this.detailsEnabled = true;
-    this.book = book;
+    this.bookSelected.emit(book);
   }
 
 }

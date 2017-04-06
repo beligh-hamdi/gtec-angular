@@ -1,13 +1,7 @@
-<p>
-  book-list works!
-</p>
+<md-list >
+  <md-list-item *ngFor="let book of books" (click)="showDetails(book)">
+    <md-icon md-list-icon>folder</md-icon>
+    <h3 md-line>{{book.title}} </h3>
+  </md-list-item>
+</md-list>
 
-<ul>
-  <li *ngFor="let book of books" (click)="showDetails(book)">
-    {{book.title}}
-  </li>
-</ul>
-
-<div *ngIf="detailsEnabled">
-  <app-book-details [book]="book"></app-book-details>
-</div>
